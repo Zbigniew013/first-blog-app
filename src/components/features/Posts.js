@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
-import { getAllPosts } from '../../redux/store';
+import { getAllPosts } from '../../redux/postsRedux';
 import { Link } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
@@ -13,7 +13,7 @@ const Posts = () => {
 
   return (
     <section>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between ">
         <h2>All posts</h2>
         <Link to={"/post/add"}>
         <Button variant="outline-info">Add post</Button>
