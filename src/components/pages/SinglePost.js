@@ -60,9 +60,7 @@ const SinglePost = () => {
           This operation will completely remove this this post from the app. Are you sure you want to do that?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
+          <Button variant="secondary" onClick={handleClose}>Cancel</Button>
           <Button variant="danger" onClick={thrash}>Remove</Button>
         </Modal.Footer>
       </Modal>
