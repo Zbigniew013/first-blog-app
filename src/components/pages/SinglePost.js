@@ -44,8 +44,9 @@ const SinglePost = () => {
 
       <Col lg={2}>
         <Link key={postData.id} to={"/post/edit/" + postData.id}>
-          <Button variant="outline-info"  className="mr-4">Edit</Button>
-        </Link> <Button variant="outline-danger" onClick={handleShow} >Delete</Button>
+          <Button variant="outline-info"  className="me-1">Edit</Button>
+        </Link>
+        <Button variant="outline-danger" onClick={handleShow} >Delete</Button>
 
       <Modal
         show={show}
