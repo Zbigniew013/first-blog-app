@@ -5,9 +5,13 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from 'react-hook-form';
 
 
 const PostForm = ({ action, actionText, ...props }) => {
+
+  const { register, handleSubmit: validate, formState: { errors } } = useForm();
+
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || new Date());
@@ -22,14 +26,16 @@ const PostForm = ({ action, actionText, ...props }) => {
 
   return (
 
-    <Form onSubmit={handleSubmit} >
+    <Form onSubmit={validate(handleSubmit)} >
 
       <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Title</Form.Label>
         <Form.Control 
+          {...register('title', {required: true})}
           placeholder="Enter title" 
           value={title} 
           onChange={event => setTitle(event.target.value)} />
+        {errors.title && <small className="d-block form-text text-danger mt-2">This field is required</small>}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formAuthor">
