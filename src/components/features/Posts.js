@@ -5,11 +5,11 @@ import { getAllPosts } from '../../redux/postsRedux';
 import { Link } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
+import dateToStr from '../../utils/dateToStr';
 
 const Posts = () => {
 
   const posts = useSelector(getAllPosts);
-
 
   return (
     <section>
@@ -27,7 +27,7 @@ const Posts = () => {
               <Card.Body>
                 <Card.Title className="mb-3">{post.title}</Card.Title>
                 <Card.Subtitle className="mt-0"><strong>Author:</strong>{post.author}</Card.Subtitle>
-                <Card.Subtitle className="mt-0"><strong>Published:</strong>{post.publishedDate}</Card.Subtitle>
+                <Card.Subtitle className="mt-0"><strong>Published:</strong>{dateToStr(post.publishedDate)}</Card.Subtitle>
                 <Card.Text className="mt-2">{post.shortDescription}</Card.Text>
                 <Link to={"/post/" + post.id} key={post.id}>
                   <Button variant="primary">Read more</Button>

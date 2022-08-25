@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
 import { removePost } from "../../redux/postsRedux";
+import dateToStr from "../../utils/dateToStr";
 
 
 const SinglePost = () => {
@@ -38,8 +39,11 @@ const SinglePost = () => {
       <Col lg={6}>
         <Card.Title className="mb-3">{postData.title}</Card.Title>
           <Card.Subtitle className="mt-0"><strong>Author:</strong>{postData.author}</Card.Subtitle>
-          <Card.Subtitle className="mt-0"><strong>Published:</strong>{postData.publishedDate}</Card.Subtitle>
-          <Card.Text className="mt-2">{postData.shortDescription}</Card.Text>
+          <Card.Subtitle 
+            className="mt-0"><strong>Published:</strong>
+              {dateToStr(postData.publishedDate)}
+          </Card.Subtitle>
+          <Card.Text className="mt-2" dangerouslySetInnerHTML={{ __html: postData.content }} />
       </Col>
 
       <Col lg={2}>
